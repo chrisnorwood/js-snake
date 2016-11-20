@@ -63,7 +63,7 @@ header {
     max-width: 150px;
     text-align: center;
     text-shadow: 0 1px rgba(117,117,117, .4);
-    @include linear-gradient(top, #DCEDC8, #BDBDBD);
+    @include linear-gradient(top, rgba(220,237,200,0.6), rgba(220,237,200,1));
     color: rgba(33,33,33,0.85);
     background-color: #DCEDC8;
     border: 0;
@@ -75,6 +75,34 @@ header {
       /* @include box-shadow(inset 0 1px 2px rgba(black, .6),
                           0 1px rgba(black, .1),
                           0 0 0 1px rgba(white, .05)); */
+    }
+  }
+
+  .score {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 5px 0;
+    padding: 0 10px;;
+    height: 45px;
+    max-width: 150px;
+    text-align: center;
+    text-shadow: 0 1px rgba(117,117,117, .4);
+    @include linear-gradient(top, rgba(220,237,200,0.6), rgba(220,237,200,1));
+    color: rgba(33,33,33,0.85);
+    background-color: #DCEDC8;
+    border: 0;
+    border-radius: 4px;
+    @include shadow(3);
+    small {
+      line-height: 1;
+      margin: 4px 0;
+      display: block;
+    }
+    span {
+      line-height: 0.7;
+      font-size: 25px;
     }
   }
 }
@@ -126,4 +154,29 @@ nav.menu {
 
 .food {
   background-color: #795548;
+}
+
+.game-over {
+  display: none;
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  width: 300px;
+  height: 80px;
+  margin-left: -150px;
+  padding: 12px;
+  text-align: center;
+
+  font-size: 25px;
+  color: rgba(33,33,33,0.85);
+  text-shadow: 0 1px rgba(117,117,117, .4);
+
+  background: #ffffff;
+  @include shadow(3);
+  border-radius: 5px;
+
+  span {
+    margin-bottom: 12px;
+    display: block;
+  }
 }

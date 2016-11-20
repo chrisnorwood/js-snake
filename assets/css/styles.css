@@ -55,10 +55,10 @@ header {
     max-width: 150px;
     text-align: center;
     text-shadow: 0 1px rgba(117, 117, 117, 0.4);
-    background-image: -webkit-linear-gradient(top, #DCEDC8, #BDBDBD);
-    background-image: -moz-linear-gradient(top, #DCEDC8, #BDBDBD);
-    background-image: -o-linear-gradient(top, #DCEDC8, #BDBDBD);
-    background-image: linear-gradient(to bottom, #DCEDC8, #BDBDBD);
+    background-image: -webkit-linear-gradient(top, rgba(220, 237, 200, 0.6), #dcedc8);
+    background-image: -moz-linear-gradient(top, rgba(220, 237, 200, 0.6), #dcedc8);
+    background-image: -o-linear-gradient(top, rgba(220, 237, 200, 0.6), #dcedc8);
+    background-image: linear-gradient(to bottom, rgba(220, 237, 200, 0.6), #dcedc8);
     color: rgba(33, 33, 33, 0.85);
     background-color: #DCEDC8;
     border: 0;
@@ -69,6 +69,33 @@ header {
       /* @include box-shadow(inset 0 1px 2px rgba(black, .6),
                           0 1px rgba(black, .1),
                           0 0 0 1px rgba(white, .05)); */ }
+  header .score {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 5px 0;
+    padding: 0 10px;
+    height: 45px;
+    max-width: 150px;
+    text-align: center;
+    text-shadow: 0 1px rgba(117, 117, 117, 0.4);
+    background-image: -webkit-linear-gradient(top, rgba(220, 237, 200, 0.6), #dcedc8);
+    background-image: -moz-linear-gradient(top, rgba(220, 237, 200, 0.6), #dcedc8);
+    background-image: -o-linear-gradient(top, rgba(220, 237, 200, 0.6), #dcedc8);
+    background-image: linear-gradient(to bottom, rgba(220, 237, 200, 0.6), #dcedc8);
+    color: rgba(33, 33, 33, 0.85);
+    background-color: #DCEDC8;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
+    header .score small {
+      line-height: 1;
+      margin: 4px 0;
+      display: block; }
+    header .score span {
+      line-height: 0.7;
+      font-size: 25px; }
 
 /* Menu */
 nav.menu {
@@ -109,5 +136,25 @@ nav.menu {
 
 .food {
   background-color: #795548; }
+
+.game-over {
+  display: none;
+  position: fixed;
+  top: 25%;
+  left: 50%;
+  width: 300px;
+  height: 80px;
+  margin-left: -150px;
+  padding: 12px;
+  text-align: center;
+  font-size: 25px;
+  color: rgba(33, 33, 33, 0.85);
+  text-shadow: 0 1px rgba(117, 117, 117, 0.4);
+  background: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 5px; }
+  .game-over span {
+    margin-bottom: 12px;
+    display: block; }
 
 /*# sourceMappingURL=styles.css.map */

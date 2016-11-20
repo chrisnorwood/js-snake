@@ -5,6 +5,11 @@ class SnakeGame {
     this.grid  = this.createGrid(25);
     this.snake = new Snake();
     this.food  = new Food();
+    this.score = 0;
+    this.speed = 110;
+
+    $('.score span').html(this.score);
+    $('.game-over').hide();
   }
 
   isGameOver() {
@@ -15,12 +20,23 @@ class SnakeGame {
     }
   }
 
+  addScore() {
+    this.score += 1;
+    $('.score span').html(this.score);
+    this.increaseSpeed();
+  }
+
+  increaseSpeed() {
+    if (this.speed > 60) {
+      this.speed -= 1.5;
+    }
+  }
+
   parseKey(keyCode) {
     let opposites = {'r': 'l', 'u': 'd', 'l': 'r', 'd': 'u'};
     let keyMap    = {37: 'l', 38: 'u', 39: 'r', 40: 'd'};
     let keyPress  = keyMap[keyCode];
 
-    /* FIx THIS SHIT UP */
     if (keyPress) {
       if ((opposites[keyPress] !== this.snake.direction)) {  
         this.snake.direction = keyPress;
@@ -29,7 +45,7 @@ class SnakeGame {
   }
 
   passTime() {
-    this.snake.move(this.food);
+    this.snake.move(this);
   }
 
   renderSnake() {
@@ -120,28 +136,30 @@ class Snake {
   }
 
   // Takes 'food' arg so updatePieces can decide if food has been eaten or not
-  move(food) {
+  move(context) {
     switch (this.direction) {
       case "r":
-        this.updatePieces(0,1,food);
+        this.updatePieces(0,1,context);
         break;
       case "l":
-        this.updatePieces(0,-1,food);
+        this.updatePieces(0,-1,context);
         break;
       case "u":
-        this.updatePieces(-1,0,food);
+        this.updatePieces(-1,0,context);
         break;
       case "d":
-        this.updatePieces(1,0,food);
+        this.updatePieces(1,0,context);
         break;
     }
   }
 
-  updatePieces(yShift, xShift, food) {
+  updatePieces(yShift, xShift, context) {
     let coord = [this.pieces[0][0]+yShift, this.pieces[0][1]+xShift];
     this.pieces.unshift(coord);
+    
+    let food = context.food;
     if (JSON.stringify(food.location) == JSON.stringify(coord)) {
-      food.eat();
+      food.eat(context);
     } else {
       this.removeTail();
     }
@@ -157,16 +175,24 @@ class Food {
     this.location = [3,4];
   }
 
-  eat() {
-    let coords = this.randomCoords();
-    this.location = coords;
+  eat(context) {
+    context.addScore();
+
+    var coord = this.randomCoord();
+    var snake = context.snake;
+
+    while (snake.hasPiece(coord)) {
+      coord = this.randomCoord();
+    } 
+    
+    this.location = coord;
   }
 
-  randomCoords() {
-    let coords = []
-    coords.push(Math.floor(Math.random() * 25));
-    coords.push(Math.floor(Math.random() * 25));
-    return coords;
+  randomCoord() {
+    let coord = []
+    coord.push(Math.floor(Math.random() * 25));
+    coord.push(Math.floor(Math.random() * 25));
+    return coord;
   }
 }
 // Implementation
@@ -188,9 +214,10 @@ function gameLoop(game) {
 
       gameLoop(game);
     } else {
-      alert("gameover");
+      $('.game-over').fadeIn('fast');
+      $('.new-game').focus();
     }
-  }, 100);
+  }, game.speed);
 }
 
 $(document).ready(function () {
@@ -198,8 +225,11 @@ $(document).ready(function () {
   game.renderGrid();
 
   var $button = $('.new-game');
+  $button.focus();
   $button.click(function(event) {
     $button.blur();
+    $('.score').show();
+
     let game = new SnakeGame();
     gameLoop(game);
   });
