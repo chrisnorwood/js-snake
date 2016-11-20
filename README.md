@@ -6,4 +6,4 @@ This recreation of the classic game "Snake" uses jQuery connect the HTML grid to
 [View on Github Pages](http://chrisnorwood.github.io/js-snake/)
 
 ## Screenshot
-[js-snake](https://cloud.githubusercontent.com/assets/18252139/20465802/1d658de2-af1b-11e6-90f5-f84f4a63a0bb.png)
+![js-snake](https://cloud.githubusercontent.com/assets/18252139/20465802/1d658de2-af1b-11e6-90f5-f84f4a63a0bb.png)
