@@ -157,4 +157,20 @@ nav.menu {
     margin-bottom: 12px;
     display: block; }
 
+/* For mobile */
+.mobile-buttons {
+  display: none;
+  margin: 2px auto;
+  width: 80vw;
+  max-width: 80vh;
+  text-align: center; }
+  .mobile-buttons button {
+    background-color: #DCEDC8;
+    border: 0;
+    border-radius: 4px; }
+
+@media (max-width: 767px) {
+  .mobile-buttons {
+    display: block; } }
+
 /*# sourceMappingURL=styles.css.map */
