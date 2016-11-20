@@ -209,6 +209,24 @@ function gameLoop(game) {
         $('body').unbind('keydown');
       });
 
+      var left = jQuery.Event('keydown', { keyCode: 37});
+      var up = jQuery.Event('keydown', { keyCode: 38});
+      var right = jQuery.Event('keydown', { keyCode: 39});
+      var down = jQuery.Event('keydown', { keyCode: 40});
+
+      $('button.left').click(function() { 
+        $('body').trigger(left);
+      });
+      $('button.up').click(function() { 
+        $('body').trigger(up);
+      });
+      $('button.right').click(function() { 
+        $('body').trigger(right);
+      });
+      $('button.down').click(function() { 
+        $('body').trigger(down);
+      });
+
       game.renderSnake();
       game.renderFood();
 
