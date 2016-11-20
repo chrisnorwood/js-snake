@@ -8,7 +8,7 @@ class SnakeGame {
   }
 
   isGameOver() {
-    if (this.snake.isInBounds()) {
+    if (this.snake.isInBounds() && this.snake.isNotOverlapping()) {
       return false;
     } else {
       return true;
@@ -20,10 +20,11 @@ class SnakeGame {
     let keyMap    = {37: 'l', 38: 'u', 39: 'r', 40: 'd'};
     let keyPress  = keyMap[keyCode];
 
-    if (opposites[keyPress] !== this.snake.direction) {
-      this.snake.direction = keyPress;
-    } else {
-      return this.snake.direction;
+    /* FIx THIS SHIT UP */
+    if (keyPress) {
+      if ((opposites[keyPress] !== this.snake.direction)) {  
+        this.snake.direction = keyPress;
+      }
     }
   }
 
@@ -96,6 +97,16 @@ class Snake {
     } else {
       return false;
     }
+  }
+
+  isNotOverlapping() {
+    let piece = this.pieces[0];
+    for (var i = 1; i < this.pieces.length; i++) {
+      if (JSON.stringify(piece) === JSON.stringify(this.pieces[i])) {
+        return false;
+      }
+    }
+    return true;
   }
 
   hasPiece(coordinate) {
@@ -183,12 +194,13 @@ function gameLoop(game) {
 }
 
 $(document).ready(function () {
-  var game = new SnakeGame();
+  let game = new SnakeGame();
   game.renderGrid();
 
   var $button = $('.new-game');
-  $button.click(function() {
-    var game = new SnakeGame();
+  $button.click(function(event) {
+    $button.blur();
+    let game = new SnakeGame();
     gameLoop(game);
   });
 });
