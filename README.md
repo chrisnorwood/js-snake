@@ -1,6 +1,6 @@
 # js-snake
 ## javscript 'Snake' game
-This recreation of the classic game "Snake" uses jQuery connect the HTML grid to a javascript game object.  It is responsive, and playable on the phone with buttons that pop up for < tablet-sized viewports.
+This recreation of the classic game "Snake" uses jQuery to connect the HTML grid with a javascript game object.  It is responsive, and playable on the phone with buttons that pop up for < tablet-sized viewports.
 
 ## Live Demo
 [View on Github Pages](http://chrisnorwood.github.io/js-snake/)
