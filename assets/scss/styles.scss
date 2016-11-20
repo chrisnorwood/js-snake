@@ -185,12 +185,14 @@ nav.menu {
 
 .mobile-buttons {
   display: none;
-  margin: 2px auto;
+  margin: 10px auto;
   width: 80vw;
   max-width: 80vh;
   text-align: center;
   button {
-    max-width: 20%;
+    text-align: center;
+    width: 20%;
+    height: 8vh;
     background-color: #DCEDC8;
     border: 0;
     border-radius: 4px;
